@@ -1,5 +1,5 @@
 // On reccupère notre dossier data en tant que module
-var data = require('./data');
+var data = require('./data/devfest-2015.js');
 
 // On affiche le contenu du tableau de speakers contenu dans data
 exports.listerTousLesPresentateurs = function(){
@@ -18,27 +18,23 @@ exports.listerToutesLesSessions = function(){
 // On affiche une session particulière en la recherchant parmis les sessions via son id
 exports.trouverUneSession = function(idSession){
 
-	data.sessions.forEach(element){
+	 return data.sessions.find(function(session){
 
-		if (idSession == element.id){
+        return session.id == idSession;
 
-			return element;
-		}
-
-	}
+    })
 
 }
 
 // On affiche les presentateurs ayant la valeur true à toppresentateur
 exports.listerTopPresentateurs = function(){
 
-	data.speakers.forEach(element){
+	return data.speakers.filter(function(speaker){
 
-		if (element.topspeaker == true){
+        return speaker.topspeaker;
 
-			return element;
-		}
+    })
 
-	}
 
 }
+
